@@ -10,7 +10,7 @@ import { Session, User } from "next-auth";
 async function authorize(credentials: Record<"email" | "password", string> | undefined): Promise<User | null> {
   if (!credentials) return null;
 
-  const res = await fetch("http://localhost:3000/api/login", {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
